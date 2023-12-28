@@ -13,10 +13,18 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function admin_dash()
+    public function home()
     {
+        if (Auth::id()) {
+            $user_email = Auth()->user()->email;
 
-        return view('admin.homepage');
+            if ($user_email == 'admin@gmail.com' || $user_email == 'hr@gmail.com') {
+                return view('admin.homepage');
+            } else {
+
+                return view('user.home');
+            }
+        }
     }
 
     public function checkLogin(Request $request)
@@ -27,8 +35,7 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->route('admin_dashboard');
+            return redirect()->route('home');
         }
 
         return redirect()->back()->withErrors(['Error' => 'Invalid Email or Password']);

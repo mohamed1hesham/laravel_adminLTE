@@ -226,6 +226,8 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+
+
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -255,6 +257,37 @@
                                 </li>
                             </ul>
                         </li>
+
+
+
+                        @can('edit all')
+                            <li class="nav-item menu-open">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Permissions and Roles
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('add_permission') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Permission</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="./index2.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Role</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
+
+
+
                         <li class="nav-item">
                             <a href="pages/widgets.html" class="nav-link">
                                 <i class="nav-icon fas fa-th"></i>

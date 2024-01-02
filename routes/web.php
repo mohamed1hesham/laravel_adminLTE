@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
@@ -34,3 +35,13 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/home', [LoginController::class, 'home'])->middleware("auth")->name('home');
 Route::post('/attend', [UserController::class, 'attended_at'])->name('attend');
 Route::post('/left', [UserController::class, 'left_at'])->name('left');
+
+
+Route::post('/report', [UserController::class, 'report'])->name('report');
+
+
+
+Route::get('/add_permission', [AdminController::class, 'index'])->name('add_permission');
+
+
+Route::post('/store_permission', [AdminController::class, 'store_permission'])->name('store_permission');

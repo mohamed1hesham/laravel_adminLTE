@@ -188,7 +188,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="/home" class="brand-link">
                 <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
@@ -227,41 +227,17 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <li class="nav-item">
+                            <a href="{{ route('add_new_user') }}" class="nav-link">
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
+                                    Add New User
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="./index.html" class="nav-link active">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v1</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index2.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v2</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="./index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Dashboard v3</p>
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
 
-
-
                         @can('edit all')
-                            <li class="nav-item menu-open">
+                            <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
@@ -277,7 +253,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="./index2.html" class="nav-link">
+                                        <a href="{{ route('add_role_page') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>Add Role</p>
                                         </a>
@@ -288,15 +264,6 @@
 
 
 
-                        <li class="nav-item">
-                            <a href="pages/widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-th"></i>
-                                <p>
-                                    Widgets
-                                    <span class="right badge badge-danger">New</span>
-                                </p>
-                            </a>
-                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
@@ -936,8 +903,6 @@
     <!-- Sparkline -->
     <script src="{{ asset('admin/plugins/sparklines/sparkline.js') }}"></script>
     <!-- JQVMap -->
-    <script src="{{ asset('admin/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
-    <script src="{{ asset('admin/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
     <!-- jQuery Knob Chart -->
     <script src="{{ asset('admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
     <!-- daterangepicker -->
@@ -952,9 +917,8 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
+    @stack('js')
 </body>
 
 </html>

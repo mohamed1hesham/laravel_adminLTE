@@ -41,7 +41,10 @@ Route::post('/report', [UserController::class, 'report'])->name('report');
 
 
 
-Route::get('/add_permission', [AdminController::class, 'index'])->name('add_permission');
-
-
+Route::get('/add_permission', [AdminController::class, 'add_permission'])->name('add_permission');
+Route::get('/add_role_page', [AdminController::class, 'add_role_page'])->name('add_role_page');
+Route::get('/add_new_user', [AdminController::class, 'add_new_user'])->name('add_new_user');
 Route::post('/store_permission', [AdminController::class, 'store_permission'])->name('store_permission');
+
+Route::post('/add_role', [AdminController::class, 'add_role'])->name('add_role');
+Route::post('/assign_role_to_user', [AdminController::class, 'assign_role_to_user'])->name('assign_role_to_user');

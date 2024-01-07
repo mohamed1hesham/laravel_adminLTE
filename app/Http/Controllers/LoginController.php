@@ -15,15 +15,15 @@ class LoginController extends Controller
 
     public function home()
     {
+
         if (Auth::id()) {
-            $user_email = Auth()->user()->email;
-
-            if ($user_email == 'admin@gmail.com' || $user_email == 'hr@gmail.com') {
-                return view('admin.homepage');
-            } else {
-
-                return view('user.home');
+            if (!auth()->user()->roles->isempty()) {
+                $user_role = auth()->user()->roles->first()->name;
+                if ($user_role == 'super admin' || $user_role == 'hr') {
+                    return view('admin.homepage');
+                }
             }
+            return view('user.home');
         }
     }
 

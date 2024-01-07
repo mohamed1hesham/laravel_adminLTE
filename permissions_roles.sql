@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 02, 2024 at 10:22 PM
+-- Generation Time: Jan 07, 2024 at 06:08 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -44,7 +44,8 @@ CREATE TABLE `attendances` (
 
 INSERT INTO `attendances` (`id`, `attended_at`, `left_at`, `delay_time`, `user_id`, `created_at`, `updated_at`, `date`) VALUES
 (7, '14:17:40', '14:27:30', '0', 3, '2024-01-01 09:32:04', '2024-01-01 12:27:30', '2024-01-01'),
-(8, '22:29:51', '22:28:55', '2', 3, '2024-01-02 20:28:55', '2024-01-02 20:29:51', '2024-01-02');
+(8, '22:29:51', '22:28:55', '2', 3, '2024-01-02 20:28:55', '2024-01-02 20:29:51', '2024-01-02'),
+(9, '19:39:50', '19:39:51', '0', 6, '2024-01-07 17:39:50', '2024-01-07 17:39:51', '2024-01-07');
 
 -- --------------------------------------------------------
 
@@ -118,7 +119,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 4),
-(2, 'App\\Models\\User', 5);
+(2, 'App\\Models\\User', 5),
+(1, 'App\\Models\\User', 6),
+(2, 'App\\Models\\User', 7);
 
 -- --------------------------------------------------------
 
@@ -152,7 +155,8 @@ CREATE TABLE `permissions` (
 
 INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'edit all', 'web', '2023-12-11 19:38:02', '2023-12-11 19:38:02'),
-(2, 'edit salary', 'web', '2023-12-11 19:38:02', '2023-12-11 19:38:02');
+(2, 'edit salary', 'web', '2023-12-11 19:38:02', '2023-12-11 19:38:02'),
+(4, 'edit-user-informations', 'web', '2024-01-07 15:18:34', '2024-01-07 15:18:34');
 
 -- --------------------------------------------------------
 
@@ -193,7 +197,10 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'super admin', 'web', '2023-12-11 19:36:57', '2023-12-11 19:36:57'),
-(2, 'hr', 'web', '2023-12-11 19:36:57', '2023-12-11 19:36:57');
+(2, 'hr', 'web', '2023-12-11 19:36:57', '2023-12-11 19:36:57'),
+(3, 'hr2', 'web', '2024-01-07 16:32:09', '2024-01-07 16:32:09'),
+(4, 'admin2', 'web', '2024-01-07 16:36:05', '2024-01-07 16:36:05'),
+(5, 'sda', 'web', '2024-01-07 16:37:05', '2024-01-07 16:37:05');
 
 -- --------------------------------------------------------
 
@@ -212,7 +219,11 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (1, 1),
-(2, 2);
+(2, 2),
+(2, 3),
+(1, 4),
+(1, 5),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -240,7 +251,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (2, 'Hesham', 'mohamedhesham2364@gmail.com', NULL, '$2y$12$wRhBW6eKdnOUP4hGOirLD.KusqG/OAbn3sxlNtRdpqnF21bwcTVG6', NULL, '2023-12-11 10:14:30', '2023-12-11 10:14:30'),
 (3, 'Lenovo', 'lenovo@gmail.com', NULL, '$2y$12$oFiMA.RKYOCpYmk8IT00ne3w1LP32rAmAwjrqVayAX5FctfRt.CNq', NULL, '2023-12-11 10:15:26', '2023-12-11 10:15:26'),
 (4, 'admin', 'admin@gmail.com', NULL, '$2y$12$7dzQ7FfsRVbg29OO9uqwz.clXMcyAnnrhJJGZneOZd6b/A5/EYkBu', NULL, '2023-12-11 14:50:28', '2023-12-11 14:50:28'),
-(5, 'hr', 'hr@gmail.com', NULL, '$2y$12$VZYgXMrDVxe1A6MJiRvGYuV0wfADZUIE1Qb8h.iqXtikhxehABeCO', NULL, '2023-12-11 14:55:50', '2023-12-11 14:55:50');
+(5, 'hr', 'hr@gmail.com', NULL, '$2y$12$VZYgXMrDVxe1A6MJiRvGYuV0wfADZUIE1Qb8h.iqXtikhxehABeCO', NULL, '2023-12-11 14:55:50', '2023-12-11 14:55:50'),
+(6, 'Samy', 'samy@gmail.com', NULL, '$2y$12$eRbQgISAf06pD3aDq12WUOFtVTIf16gNUx3z9I80lmX1ZcFXbzFTS', NULL, '2024-01-07 17:37:36', '2024-01-07 17:37:36'),
+(7, 'samy2', 'samy2@gmail.com', NULL, '$2y$12$i3mPB44I3q2nTmZ0sZHqUeYT6Ugbqa4ErtjNxIGV4yeCIPr/2N10q', NULL, '2024-01-07 17:38:51', '2024-01-07 17:38:51');
 
 --
 -- Indexes for dumped tables
@@ -329,7 +342,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendances`
 --
 ALTER TABLE `attendances`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -347,7 +360,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -359,13 +372,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
